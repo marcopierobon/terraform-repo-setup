@@ -2,10 +2,6 @@ provider "aws" {
   region = var.region
 }
 
-data "aws_default_subnet" "default" {
-  availability_zone = var.availability_zone
-}
-
 data "aws_ami" "ubuntu_latest" {
   most_recent = true
 
@@ -22,22 +18,12 @@ data "aws_ami" "ubuntu_latest" {
   owners = ["099720109477"] # Canonical
 }
 
-variable "tags" {
-  description = "Common tags to apply to all resources"
-  type = map(string)
-  default = {
-    Team        = var.team_name
-    Environment = var.environment_name
-  }
-}
-
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "~> 2.0"
 
   bucket = var.s3_bucket_name
-
-  tags   = var.tags
+  tags          = local.common_tags
 }
 
 module "ec2_instance" {
@@ -47,9 +33,7 @@ module "ec2_instance" {
   name          = var.ec2_instance_name
   instance_type = var.ec2_instance_type
   ami           = data.aws_ami.ubuntu_latest.id
-  subnet_id     = data.aws_default_subnet.default.id
-
-  tags   = var.tags
+  tags          = local.common_tags
 }
 
 
@@ -58,14 +42,12 @@ resource "aws_ssm_parameter" "db_name" {
   name  = var.parameter_store_db_name
   type  = "String"
   value = var.db_name
-
-  tags   = var.tags
+  tags   = local.common_tags
 }
 
 resource "aws_ssm_parameter" "db_user" {
   name  = var.parameter_store_db_user
   type  = "String"
   value = var.db_user
-
-  tags   = var.tags
+  tags          = local.common_tags
 }

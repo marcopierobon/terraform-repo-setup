@@ -30,14 +30,6 @@ variable "ec2_instance_type" {
   description = "Instance type of the EC2 instance"
 }
 
-variable "ami_id" {
-  description = "The AMI ID to use for the instance"
-}
-
-variable "subnet_id" {
-  description = "The VPC Subnet ID to launch in"
-}
-
 variable "parameter_store_db_name" {
   description = "The name of the parameter store for the DB name"
 }
