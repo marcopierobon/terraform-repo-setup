@@ -1,0 +1,8 @@
+region                  = "us-west-2"
+s3_bucket_name          = "my-prod-bucket"
+ec2_instance_name       = "prod-ec2-instance"
+ec2_instance_type       = "t2.large"
+parameter_store_db_name = "/prod/db_name"
+parameter_store_db_user = "/prod/db_user"
+db_name                 = "prod_database"
+db_user                 = "prod_user"
