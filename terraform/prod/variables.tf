@@ -8,6 +8,16 @@ variable "availability_zone" {
   default     = "us-west-2a"
 }
 
+variable "environment_name" {
+  description = "The name of the environment (e.g., 'dev' or 'prod')"
+  default     = "dev" 
+}
+
+variable "team_name" {
+  description = "The name of the team"
+  default     = "PinkUnicorns"
+}
+
 variable "s3_bucket_name" {
   description = "Name of the S3 bucket"
 }

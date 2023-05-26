@@ -1,4 +1,7 @@
 region                  = "us-west-2"
+availability_zone       = "us-west-2a"
+environment_name        = "dev"
+team_name               = "PinkUnicorns"
 s3_bucket_name          = "my-dev-bucket"
 ec2_instance_name       = "dev-ec2-instance"
 ec2_instance_type       = "t2.micro"
