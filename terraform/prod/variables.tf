@@ -10,7 +10,7 @@ variable "availability_zone" {
 
 variable "environment_name" {
   description = "The name of the environment (e.g., 'dev' or 'prod')"
-  default     = "dev" 
+  default     = "dev"
 }
 
 variable "team_name" {

@@ -23,7 +23,7 @@ module "s3_bucket" {
   version = "~> 2.0"
 
   bucket = var.s3_bucket_name
-  tags          = local.common_tags
+  tags   = local.common_tags
 }
 
 module "ec2_instance" {
@@ -42,12 +42,12 @@ resource "aws_ssm_parameter" "db_name" {
   name  = var.parameter_store_db_name
   type  = "String"
   value = var.db_name
-  tags   = local.common_tags
+  tags  = local.common_tags
 }
 
 resource "aws_ssm_parameter" "db_user" {
   name  = var.parameter_store_db_user
   type  = "String"
   value = var.db_user
-  tags          = local.common_tags
+  tags  = local.common_tags
 }
